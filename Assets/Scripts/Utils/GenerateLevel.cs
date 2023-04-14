@@ -20,6 +20,7 @@ public class GenerateLevel : MonoBehaviour
     [SerializeField] private Transform _forestParent;
     [SerializeField] private Transform _houseParent;
     [SerializeField] private Transform _personParent;
+    [SerializeField] private Transform _eventParent;
     
     [SerializeField] private GameObject _tilePrefab;
     [SerializeField] private GameObject _riverPrefab;
@@ -37,75 +38,9 @@ public class GenerateLevel : MonoBehaviour
     private float _riverThreshold = 0.85f;
     private float _forestThreshold = 0.3f;
     private float _houseThreshold = 0.45f;
-    private float _eventThreshold = 0.05f;
+    private float _eventThreshold = 0.4f;
 
     private float _personSpawnDistance = 10f;
-    
-    public void GeneratTiles()
-    {
-        int tilesGenerated = 0;
-        for (int x = 0; x < _width; x+=5)
-        {
-            for (int y = 0; y < _height; y+=5)
-            {
-                float nValue = _perlinNoise.noiseMap[x, y];
-                Vector2 spawnPos = new Vector2(x, y);
-                
-                if (nValue < 0.1f) // river
-                {
-                    SpawnTile(Color.blue, _tile, spawnPos);
-                }
-                else if (nValue < 0.35f) // houses
-                {
-                    int houseType = Random.Range(0, 5);
-                    Color houseColor = Color.white;
-
-                    switch (houseType)
-                    {
-                        case 0:
-                            houseColor = Color.red;
-                            break;
-                        case 1:
-                            houseColor = Color.blue;
-                            break;
-                        case 2:
-                            houseColor = new Color(232, 160, 231);
-                            break;
-                        case 3:
-                            houseColor = Color.yellow;
-                            break;
-                        case 4:
-                            houseColor = Color.magenta;
-                            break;
-                    }
-
-                    SpawnTile(houseColor, _tile, spawnPos);
-                }
-                else if (nValue < 0.5f) // forest
-                {
-                    SpawnTile(Color.green, _tile, spawnPos);
-                }
-                else if (nValue < 0.6f) // grass
-                {
-                    SpawnTile(new Color(0.2f, 0.8f, 0.2f), _tile, spawnPos);
-                }
-                else // fields
-                {
-                    SpawnTile(new Color(0.7f, 0.5f, 0.2f), _tile, spawnPos);
-                }
-
-                // random events
-                if (nValue > 0.9f && nValue < 1f)
-                {
-                    
-                }
-
-                tilesGenerated++;
-            }
-        }
-        
-        Debug.Log($"Tiles Generated: {tilesGenerated}");
-    }
 
     public void GenerateTiles2()
     {
@@ -118,6 +53,7 @@ public class GenerateLevel : MonoBehaviour
 
         int houseTilesCounter = 0;
         int personsTilesCounter = 0;
+        int eventsTilesCounter = 0;
 
         int riverCounter = 0;
         int forestCounter = 0;
@@ -131,19 +67,33 @@ public class GenerateLevel : MonoBehaviour
             {
                 float noiseValue = _perlinNoise.noiseMap[x, y];
                 Vector3 tilePosition = new Vector3(x, y, 0f);
-        
-                if (noiseValue < _eventThreshold)
-                {
-                    GameObject eventTile = Instantiate(_eventPrefab, tilePosition, Quaternion.identity);
-                    eventTile.transform.localScale = Vector3.one * 5;
-                    _eventsManager.eventsPosition.Add(tilePosition);
-                    _eventsManager.listGrown?.Invoke();
-                }
-                else if (noiseValue < _forestThreshold)
+                
+                if (noiseValue < _forestThreshold)
                 {
                     GameObject forestTile = Instantiate(_forestPrefab, tilePosition, Quaternion.identity, _forestParent);
                     forestTile.transform.localScale = Vector3.one * 5;
                     forestCounter++;
+                }
+                else if (noiseValue < _eventThreshold)
+                {
+                    eventsTilesCounter++;
+                    if (eventsTilesCounter >= 50 && Random.value <= 0.5f)
+                    {
+                        eventsTilesCounter = 0;
+                        GameObject eventTile = Instantiate(_eventPrefab, tilePosition, Quaternion.identity, _eventParent);
+                        eventTile.transform.localScale = Vector3.one * 5;
+                        _eventsManager.eventsPosition.Add(tilePosition);
+                        _eventsManager.listGrown?.Invoke();
+                        GameObject grassTile = Instantiate(_tilePrefab, tilePosition, Quaternion.identity, _grassParent);
+                        grassTile.transform.localScale = Vector3.one * 5;
+                        grassCounter++;
+                    }
+                    else
+                    {
+                        GameObject grassTile = Instantiate(_tilePrefab, tilePosition, Quaternion.identity, _grassParent);
+                        grassTile.transform.localScale = Vector3.one * 5;
+                        grassCounter++;
+                    }
                 }
                 else if (noiseValue < _houseThreshold && housePositions.Count < maxHouses)
                 {
@@ -165,7 +115,7 @@ public class GenerateLevel : MonoBehaviour
                             housePositions.Add(housePosition);
 
                             housesCounter++;
-                            if (personsTilesCounter >= 40)
+                            if (personsTilesCounter >= 20)
                             {
                                 personsTilesCounter = 0;
                                 if (personPositions.Count < maxPersons && Random.value < 0.5f)

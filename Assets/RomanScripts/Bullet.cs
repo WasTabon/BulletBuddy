@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(transform.up * _speed * Time.deltaTime);
+        transform.Translate(transform.up * (_speed * Time.deltaTime));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

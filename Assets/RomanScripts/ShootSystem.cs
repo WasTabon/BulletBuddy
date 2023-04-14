@@ -10,13 +10,11 @@ public class ShootSystem : MonoBehaviour
     private void Start()
     {
         _shootpos=GetComponent<Transform>();
-
     }
 
     private void Update()
     {
         Shoot();
-
     }
 
     private void Shoot()

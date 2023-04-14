@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
         if (_icanmove)
         {
             Debug.Log(_direction);
-            rb.velocity = (_direction * Time.deltaTime * walkspeed);
+            rb.velocity = (_direction * Time.deltaTime * walkspeed * 100);
         }
     }
 
