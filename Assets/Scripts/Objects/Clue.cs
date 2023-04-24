@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class Clue : MonoBehaviour
 {
-    [SerializeField] private bool _isClueToBomb;
-    
     
 }
