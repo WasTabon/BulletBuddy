@@ -41,8 +41,7 @@ public class WorldCreator : MonoBehaviour
         _generateLevel._personSpawned += SpawnPersons;
         _eventsManager.listGrown += SpawnEvents;
         
-        //_generateLevel.GeneratTiles();
-        _generateLevel.GenerateTiles2();
+        _generateLevel.GenerateTiles();
         
         SpawnCluesAndBomb();
     }

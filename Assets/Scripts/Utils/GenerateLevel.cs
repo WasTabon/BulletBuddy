@@ -22,7 +22,7 @@ public class GenerateLevel : MonoBehaviour
     [SerializeField] private Transform _personParent;
     [SerializeField] private Transform _eventParent;
     
-    [SerializeField] private GameObject _tilePrefab;
+    [SerializeField] private GameObject[] _tilePrefab;
     [SerializeField] private GameObject _riverPrefab;
     [SerializeField] private GameObject _forestPrefab;
     [SerializeField] private GameObject _housePrefab;
@@ -42,7 +42,7 @@ public class GenerateLevel : MonoBehaviour
 
     private float _personSpawnDistance = 10f;
 
-    public void GenerateTiles2()
+    public void GenerateTiles()
     {
         List<Vector3> housePositions = new List<Vector3>();
         List<Vector3> personPositions = new List<Vector3>();
@@ -84,13 +84,15 @@ public class GenerateLevel : MonoBehaviour
                         eventTile.transform.localScale = Vector3.one * 5;
                         _eventsManager.eventsPosition.Add(tilePosition);
                         _eventsManager.listGrown?.Invoke();
-                        GameObject grassTile = Instantiate(_tilePrefab, tilePosition, Quaternion.identity, _grassParent);
+                        int randomTile = Random.Range(0, _tilePrefab.Length);
+                        GameObject grassTile = Instantiate(_tilePrefab[randomTile], tilePosition, Quaternion.identity, _grassParent);
                         grassTile.transform.localScale = Vector3.one * 5;
                         grassCounter++;
                     }
                     else
                     {
-                        GameObject grassTile = Instantiate(_tilePrefab, tilePosition, Quaternion.identity, _grassParent);
+                        int randomTile = Random.Range(0, _tilePrefab.Length);
+                        GameObject grassTile = Instantiate(_tilePrefab[randomTile], tilePosition, Quaternion.identity, _grassParent);
                         grassTile.transform.localScale = Vector3.one * 5;
                         grassCounter++;
                     }
@@ -137,7 +139,8 @@ public class GenerateLevel : MonoBehaviour
                     }
                     else
                     {
-                        GameObject grassTile = Instantiate(_tilePrefab, tilePosition, Quaternion.identity, _grassParent);
+                        int randomTile = Random.Range(0, _tilePrefab.Length);
+                        GameObject grassTile = Instantiate(_tilePrefab[randomTile], tilePosition, Quaternion.identity, _grassParent);
                         grassTile.transform.localScale = Vector3.one * 5;
                         grassCounter++;
                     }
@@ -150,7 +153,8 @@ public class GenerateLevel : MonoBehaviour
                 }
                 else
                 {
-                    GameObject grassTile = Instantiate(_tilePrefab, tilePosition, Quaternion.identity, _grassParent);
+                    int randomTile = Random.Range(0, _tilePrefab.Length);
+                    GameObject grassTile = Instantiate(_tilePrefab[randomTile], tilePosition, Quaternion.identity, _grassParent);
                     grassTile.transform.localScale = Vector3.one * 5;
                     grassCounter++;
                 }
@@ -161,53 +165,10 @@ public class GenerateLevel : MonoBehaviour
         
     }
 
-    private bool CheckIsNearRiver(Vector3 position, float distance)
-    {
-        for (int x = (int) (position.x - distance); x <= position.x + distance; x++)
-        {
-            for (int y = (int) (position.y - distance); y <= position.y + distance; y++)
-            {
-                if (x < 0 || x >= _worldWidth || y < 0 || y >= _worldHeight)
-                {
-                    continue;
-                }
-
-                float noiseValue = _perlinNoise.noiseMap[x, y];
-                if (noiseValue < _riverThreshold && Vector2.Distance(position, new Vector2(x, y)) < distance)
-                {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    private Vector3 GetPositionAwayFromRiver(Vector3 position)
-    {
-        Vector3 awayFromRiverPosition = position;
-        for (int i = 1; i < 10; i++)
-        {
-            awayFromRiverPosition = GetRandomPositionNearby(position, i);
-            if (!CheckIsNearRiver(awayFromRiverPosition, 2f))
-            {
-                break;
-            }
-        }
-
-        return awayFromRiverPosition;
-    }
-    
     private Vector3 GetRandomPositionNearby(Vector3 center, float distance)
     {
         Vector3 randomDirection = Random.insideUnitSphere * distance;
         randomDirection.y = 0f;
         return center + randomDirection;
-    }
-    
-    private void SpawnTile(Color color, GameObject tile, Vector2 spawnPos)
-    {
-        tile.GetComponent<SpriteRenderer>().color = color;
-        Instantiate(_tile, spawnPos, Quaternion.identity, _parent);
     }
 }

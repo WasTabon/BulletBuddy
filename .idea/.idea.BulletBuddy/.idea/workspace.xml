@@ -3,15 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4185d251-e28f-48b5-afbe-177dcc3f522d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BulletBuddy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BulletBuddy/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Idle.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player/Walk.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player/Walk.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/1Clue Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/1Clue Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/2Clue Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/2Clue Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/3Clue Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/3Clue Variant.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Clue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Clue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/GenerateLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/GenerateLevel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/WorldCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/WorldCreator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +71,7 @@
       <workItem from="1681486611515" duration="7140000" />
       <workItem from="1681564917160" duration="3608000" />
       <workItem from="1682111175414" duration="634000" />
+      <workItem from="1682461909942" duration="2177000" />
     </task>
     <servers />
   </component>
