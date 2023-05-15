@@ -192,7 +192,7 @@ public class GenerateLevel : MonoBehaviour
                         grassCounter++;
                     }
                 }
-                else if (noiseValue < _riverThreshold && noiseValue + 0.4f < _riverThreshold)
+                else if (noiseValue > _riverThreshold)
                 {
                     GameObject riverTile = Instantiate(_riverPrefab, tilePosition, Quaternion.identity, _riverParent);
                     riverTile.transform.localScale = Vector3.one * 5;

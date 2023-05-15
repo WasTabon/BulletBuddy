@@ -2159,6 +2159,26 @@ PrefabInstance:
       propertyPath: _eventsManager
       value: 
       objectReference: {fileID: 7512832112211949018}
+    - target: {fileID: 7426827721955358606, guid: e2fba7e39c3203049b3d66802527fe95, type: 3}
+      propertyPath: _tilePrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7426827721955358606, guid: e2fba7e39c3203049b3d66802527fe95, type: 3}
+      propertyPath: _tilePrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 2868854459126468024, guid: f26840cf9bbaa3f42b13f90e7cf2cf23, type: 3}
+    - target: {fileID: 7426827721955358606, guid: e2fba7e39c3203049b3d66802527fe95, type: 3}
+      propertyPath: _tilePrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 8498557812432962443, guid: 320cda669e1682844a38a227ac949ef3, type: 3}
+    - target: {fileID: 7426827721955358606, guid: e2fba7e39c3203049b3d66802527fe95, type: 3}
+      propertyPath: _tilePrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 5878090941857560709, guid: bf63d21088805ba4d95cc75e7c4e282d, type: 3}
+    - target: {fileID: 7426827721955358606, guid: e2fba7e39c3203049b3d66802527fe95, type: 3}
+      propertyPath: _tilePrefab.Array.data[3]
+      value: 
+      objectReference: {fileID: 3794422120979231564, guid: ab6afe75451de5e4596022c06dd9f670, type: 3}
     - target: {fileID: 7426827721955358607, guid: e2fba7e39c3203049b3d66802527fe95, type: 3}
       propertyPath: m_RootOrder
       value: 3

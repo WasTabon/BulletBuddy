@@ -6,6 +6,7 @@ public class Ally : MonoBehaviour
     [SerializeField] private GameObject _clue;
     [SerializeField] private bool _isJustEvent; // true - не бомба, false - бомба.
     [SerializeField] [TextArea] private string _textToSay;
+    [SerializeField] private LayerMask _layerOfClue;
 
     private EventsManager _eventsManager;
     private GameObject _dialogueWindow;
@@ -29,7 +30,7 @@ public class Ally : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Bullet"))
         {
-            ChangeClueLayer(10);
+            ChangeClueLayer(_layerOfClue);
             ChangeText();
         }
     }
@@ -45,9 +46,11 @@ public class Ally : MonoBehaviour
         }
     }
     
-    private void ChangeClueLayer(int layer)
+    private void ChangeClueLayer(LayerMask layer)
     {
-        _clue.layer = layer;
+        _clue.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("OnGameAndOnMap");
+        Debug.Log($"Layer - {layer}");
+        Debug.Log($"Name - {_clue.transform.GetChild(0).gameObject.name}");
     }
 
     private void ChangeText()

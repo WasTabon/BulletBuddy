@@ -67,5 +67,9 @@ PrefabInstance:
       propertyPath: _textToSay
       value: "\u0422\u0440\u0435\u0442\u044F \u043F\u0456\u0434\u043A\u0430\u0437\u043A\u0430\n\n"
       objectReference: {fileID: 0}
+    - target: {fileID: 8426794696883509660, guid: 64b7c1cf7058f61479782651d013fc7b, type: 3}
+      propertyPath: _layerOfClue.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b7c1cf7058f61479782651d013fc7b, type: 3}
