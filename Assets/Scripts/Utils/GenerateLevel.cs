@@ -85,6 +85,10 @@ public class GenerateLevel : MonoBehaviour
                         _eventsManager.eventsPosition.Add(tilePosition);
                         _eventsManager.listGrown?.Invoke();
                         int randomTile = Random.Range(0, _tilePrefab.Length);
+                        if (randomTile <= 6)
+                            randomTile = Random.Range(0, _tilePrefab.Length);
+                        if (randomTile == 3)
+                            randomTile = Random.Range(0, _tilePrefab.Length);
                         GameObject grassTile = Instantiate(_tilePrefab[randomTile], tilePosition, Quaternion.identity, _grassParent);
                         grassTile.transform.localScale = Vector3.one * 5;
                         grassCounter++;
@@ -92,6 +96,10 @@ public class GenerateLevel : MonoBehaviour
                     else
                     {
                         int randomTile = Random.Range(0, _tilePrefab.Length);
+                        if (randomTile <= 6)
+                            randomTile = Random.Range(0, _tilePrefab.Length);
+                        if (randomTile == 3)
+                            randomTile = Random.Range(0, _tilePrefab.Length);
                         GameObject grassTile = Instantiate(_tilePrefab[randomTile], tilePosition, Quaternion.identity, _grassParent);
                         grassTile.transform.localScale = Vector3.one * 5;
                         grassCounter++;
@@ -140,6 +148,10 @@ public class GenerateLevel : MonoBehaviour
                     else
                     {
                         int randomTile = Random.Range(0, _tilePrefab.Length);
+                        if (randomTile <= 6)
+                            randomTile = Random.Range(0, _tilePrefab.Length);
+                        if (randomTile == 3)
+                            randomTile = Random.Range(0, _tilePrefab.Length);
                         GameObject grassTile = Instantiate(_tilePrefab[randomTile], tilePosition, Quaternion.identity, _grassParent);
                         grassTile.transform.localScale = Vector3.one * 5;
                         grassCounter++;
@@ -154,6 +166,10 @@ public class GenerateLevel : MonoBehaviour
                 else
                 {
                     int randomTile = Random.Range(0, _tilePrefab.Length);
+                    if (randomTile <= 6)
+                        randomTile = Random.Range(0, _tilePrefab.Length);
+                    if (randomTile == 3)
+                        randomTile = Random.Range(0, _tilePrefab.Length);
                     GameObject grassTile = Instantiate(_tilePrefab[randomTile], tilePosition, Quaternion.identity, _grassParent);
                     grassTile.transform.localScale = Vector3.one * 5;
                     grassCounter++;
